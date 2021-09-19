@@ -66,10 +66,6 @@ void update_sha256(sha256_ctx* ctx, const char* msg, uint64_t msglen, char* buf)
 
     transform_sha256(ctx);
 
-    // for (int i = 0; i < 8; i++)
-    // {
-    //     printf("%u\n", ctx->state[i]);
-    // }
     // convert words into their hexadecimal representation
     for (int i = 0; i < 8; i++)
     {
