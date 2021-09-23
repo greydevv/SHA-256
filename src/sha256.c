@@ -44,7 +44,8 @@ void update_sha256(sha256_ctx* ctx, const char* msg, size_t msglen, char* buf)
     ctx->data[ctx->datalen++] = 0x80;
     if (ctx->datalen > 56)
     {
-        // current block will not be able to fit 64 bits on the end, so there needs to be another 512-bit block
+        // current block will not be able to fit 64 bits on the end, so there
+        // needs to be another 512-bit block
         while (ctx->datalen < 64)
         {
             ctx->data[ctx->datalen++] = 0x00;
@@ -56,12 +57,13 @@ void update_sha256(sha256_ctx* ctx, const char* msg, size_t msglen, char* buf)
     {
         ctx->data[ctx->datalen++] = 0x00;
     }
-    // here, 'ctx->data' is 448 bits long (56 bytes). This leaves 64 bits (8 bytes) for the message length
-    // total length should now be 512 bits.
+    // here, 'ctx->data' is 448 bits long (56 bytes). This leaves 64 bits (8
+    // bytes) for the message length total length should now be 512 bits.
     uint64_t msgbitlen = msglen*8;
     for (int i = 0; i < 8; i++)
     {
-        // replace the last 64 bits (8 bytes) with the length of the original message in bits
+        // replace the last 64 bits (8 bytes) with the length of the original
+        // message in bits
         ctx->data[63-i] = msgbitlen >> (i*8);
         ctx->datalen++;
     }
@@ -84,7 +86,6 @@ void transform_sha256(sha256_ctx* ctx)
     // elements of 'chunks' should be the first 16 words of 'ctx->data'
     for (i = 0, j = 0; i < 16; i++, j+=4)
     {
-        // this is good
         chunks[i] = (ctx->data[j] << 24) | (ctx->data[j+1] << 16) | (ctx->data[j+2] << 8) | (ctx->data[j+3]);
     }
     for (; i < 64; i++)
