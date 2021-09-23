@@ -1,9 +1,3 @@
-*
-
-!*/
-!*.c
-!*.h
-!Makefile
-!.gitignore
-!README.md
 .vscode
+.DS_Store
+*.o
