@@ -7,6 +7,7 @@
 
 typedef uint8_t byte_t;
 typedef uint32_t word_t;
+
 typedef struct SHA256_CTX_STRUCT
 {
     byte_t data[64];
@@ -28,7 +29,7 @@ typedef struct SHA256_CTX_STRUCT
 /* ------------------------------ FUNCTION DEFS ----------------------------- */
 
 void init_sha256(sha256_ctx* ctx);
-void update_sha256(sha256_ctx* ctx, const char* msg, uint64_t msglen, char* buf);
+void update_sha256(sha256_ctx* ctx, const char* msg, size_t msglen, char* buf);
 void transform_sha256(sha256_ctx* ctx);
 
 #endif

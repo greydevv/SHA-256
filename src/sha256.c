@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <inttypes.h>
 #include "sha256.h"
 
 static const word_t K[64] = {
@@ -16,6 +17,7 @@ static const word_t K[64] = {
 
 void init_sha256(sha256_ctx* ctx)
 {
+    // memset(ctx->data, 0, sizeof ctx->data);
     ctx->datalen = 0;
     ctx->bitlen = 0;
     ctx->state[0] = 0x6a09e667;
@@ -28,7 +30,7 @@ void init_sha256(sha256_ctx* ctx)
     ctx->state[7] = 0x5be0cd19;
 }
 
-void update_sha256(sha256_ctx* ctx, const char* msg, uint64_t msglen, char* buf)
+void update_sha256(sha256_ctx* ctx, const char* msg, size_t msglen, char* buf)
 {
     for (int i = 0; i < msglen; i++)
     {
@@ -69,10 +71,8 @@ void update_sha256(sha256_ctx* ctx, const char* msg, uint64_t msglen, char* buf)
     // convert words into their hexadecimal representation
     for (int i = 0; i < 8; i++)
     {
-        // the '08' in the format specifier is necessary for representing hexadecimal strings with leading zeroes
-        buf += sprintf(buf, "%08x", ctx->state[i]);
+        buf += snprintf(buf, 9, "%08" PRIx32, ctx->state[i]);
     }
-    buf[64] = '\0';
 }
 
 void transform_sha256(sha256_ctx* ctx)
