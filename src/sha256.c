@@ -17,7 +17,6 @@ static const word_t K[64] = {
 
 void init_sha256(sha256_ctx* ctx)
 {
-    // memset(ctx->data, 0, sizeof ctx->data);
     ctx->datalen = 0;
     ctx->bitlen = 0;
     ctx->state[0] = 0x6a09e667;
