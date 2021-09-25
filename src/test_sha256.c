@@ -29,7 +29,7 @@ void test()
         update_sha256(ctx, vectors[i], strlen(vectors[i]), buf);
         if (strcmp(buf, outputs[i]) != 0)
         {
-            success = 1;
+            success = 0;
             printf("[ Failure ]\n  Expected: <%.64s>\n  Received: <%.64s>\n", outputs[i], buf);
         }
     }
