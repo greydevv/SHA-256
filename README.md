@@ -1,6 +1,8 @@
 # SHA-256
-
-A C implementation of the widely used cryptographic 256-bit Secure Hashing Algorithm. 
+A C implementation of the widely used cryptographic 256-bit Secure Hashing
+Algorithm. 
 
 ### Disclaimer
-This is my basic implementation of the algorithm and therefore should not be used in environments where security is important. Protection against popular SHA-256 cracks have not been implemented; this was created simply to help myself learn about how hashing algorithms work.
+This implementation of SHA-256 should not be used in cryptographically secure
+environments due to its basic nature. It was simply created to learn more about
+how SHA-256 works and therefore is intended for educational purposes.
