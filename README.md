@@ -1,3 +1,5 @@
+# THIS REPO HAS MOVED TO [CODEBERG](https://codeberg.org/moriazoso/SHA-256)
+
 # SHA-256
 A C implementation of the widely used cryptographic 256-bit Secure Hashing
 Algorithm. 
